@@ -61,7 +61,6 @@ class _ProviderDataTableExampleState extends State<ProviderDataTableExample> {
   Future<void> _clearCertificates(BuildContext context) async {
 
     setState(() {
-      print('Loading...true');
       _loading = true;
     });
 
@@ -70,7 +69,6 @@ class _ProviderDataTableExampleState extends State<ProviderDataTableExample> {
 
     await _getCertificates().then((cerData) {
       setState(() {
-        print('Loading...false');
         _certificates = cerData!;
         _loading = false;
       });
@@ -79,6 +77,18 @@ class _ProviderDataTableExampleState extends State<ProviderDataTableExample> {
 
   void _updateCertificates(BuildContext context) {
     _loadCertificates(context);
+  }
+
+  String _formatName(String commonName){
+    if ( commonName.trim().isEmpty ){
+      return commonName;
+    }
+
+    commonName = commonName.trim();
+
+    int posSeparator = commonName.lastIndexOf(':');
+
+    return commonName.substring( 0, posSeparator ).trim();
   }
 
   @override
@@ -218,7 +228,7 @@ class _ProviderDataTableExampleState extends State<ProviderDataTableExample> {
                     cells: [
                       DataCell(
                         Text(
-                          e.requerente,
+                          _formatName(e.requerente),
                           style: const TextStyle(
                             fontStyle: FontStyle.italic,
                           ),
