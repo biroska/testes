@@ -5,6 +5,7 @@ import 'package:url_launcher/url_launcher_string.dart';
 
 import '../model/certificate_basic_info.dart';
 import '../providers/certificate_provider.dart';
+import '../utils/format_utils.dart';
 
 class ProviderDataTableScreen extends StatelessWidget {
   const ProviderDataTableScreen({Key? key}) : super(key: key);
@@ -77,18 +78,6 @@ class _ProviderDataTableExampleState extends State<ProviderDataTableExample> {
 
   void _updateCertificates(BuildContext context) {
     _loadCertificates(context);
-  }
-
-  String _formatName(String commonName){
-    if ( commonName.trim().isEmpty ){
-      return commonName;
-    }
-
-    commonName = commonName.trim();
-
-    int posSeparator = commonName.lastIndexOf(':');
-
-    return commonName.substring( 0, posSeparator ).trim();
   }
 
   @override
@@ -228,7 +217,7 @@ class _ProviderDataTableExampleState extends State<ProviderDataTableExample> {
                     cells: [
                       DataCell(
                         Text(
-                          _formatName(e.requerente),
+                          FormatUtils.formatName(e.requerente),
                           style: const TextStyle(
                             fontStyle: FontStyle.italic,
                           ),

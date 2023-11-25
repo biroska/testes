@@ -49,6 +49,20 @@ class MainScreen extends StatelessWidget {
                   ),
                   const SizedBox(height: 10),
                   ElevatedButton(
+                    onPressed: () => Navigator.of(context).pushNamed(AppRoutes.LIST_TILE),
+                    style: ElevatedButton.styleFrom(
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(30),
+                      ),
+                      padding:
+                      const EdgeInsets.symmetric(vertical: 8, horizontal: 30),
+                    ),
+                    child: const Text(
+                      'Provider ListTile',
+                    ),
+                  ),
+                  const SizedBox(height: 10),
+                  ElevatedButton(
                     onPressed: () => Navigator.of(context).pushNamed(AppRoutes.PROVIDER_DATA_TABLE),
                     style: ElevatedButton.styleFrom(
                       shape: RoundedRectangleBorder(

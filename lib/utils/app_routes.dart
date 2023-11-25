@@ -3,4 +3,5 @@ class AppRoutes {
   static const TAB = '/tab';
   static const DATA_TABLE = '/datatable';
   static const PROVIDER_DATA_TABLE = '/providerdatatable';
+  static const LIST_TILE = '/listtile';
 }
